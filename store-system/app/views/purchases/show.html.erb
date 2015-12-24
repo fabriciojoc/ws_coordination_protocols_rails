@@ -1,0 +1,49 @@
+<p class="left-align">
+  Compra
+</p>
+
+<div class="row card-panel"> 
+  <div class="col s12 m12 l12">
+    <h5 class="left-align">
+      Compra #<%= @purchase.id %>
+    </h5>
+    <% if notice %>
+      <blockquote class="notice-blockquote">
+        <%= notice %>
+      </blockquote>
+    <% end %>
+    <% if alert %>
+      <blockquote>
+        <%= alert %>
+      </blockquote>
+    <% end %>
+  </div>
+  <div class="col s12 m12 l12">
+    <p>
+      <strong>Produto:</strong>
+      <%= @purchase.product_name %>
+    </p>
+
+    <p>
+      <strong>Preço:</strong>
+      <%= @purchase.price %>
+    </p>
+
+    <p>
+      <strong>Cartão:</strong>
+      <%= @purchase.card_number %>
+    </p>
+
+    <p>
+      <strong>Usuário:</strong>
+      <%= @purchase.user.name %>
+    </p>
+
+    <p>
+      <strong>Fornecedor:</strong>
+      <%= @purchase.provider.name %>
+    </p>
+
+    <%= link_to 'Voltar', purchases_path, :class => "btn waves-effect waves-light" %>
+  </div>
+</div>

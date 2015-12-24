@@ -1,0 +1,54 @@
+<p class="left-align">
+  Minhas Compras
+</p>
+
+<div class="row card-panel"> 
+  <div class="col s12 m12 l12">
+    <h5 class="left-align">
+      Minhas Compras
+    </h5>
+    <% if notice %>
+      <blockquote class="notice-blockquote">
+        <%= notice %>
+      </blockquote>
+    <% end %>
+    <% if alert %>
+      <blockquote>
+        <%= alert %>
+      </blockquote>
+    <% end %>
+  </div>
+  <div class="col s12 m12 l12">
+    <% if @purchases.size > 0 %>
+      <table>
+        <thead>
+          <tr>
+              <th>Num.</th>
+              <th>Produto</th>
+              <th>Preço</th>
+              <th>Cartão</th>
+              <th>Data</th>
+              <th>Status</th>
+              <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @purchases.each do |purchase| %>
+            <tr>
+              <td><%= purchase.id %></td>
+              <td><%= purchase.product_name %></td>
+              <td><%= number_to_currency(purchase.price, :unit => "R$ ") %></td>
+              <td><%= purchase.card_number %></td>
+              <td><%= purchase.created_at.strftime("%d/%m/%Y") %></td>
+              <td><%= purchase.status %> </td>
+              <td><%= link_to 'Ver', purchase %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p> Você ainda não realizou nenhuma compra. </p>
+    <% end %>
+  </div>
+</div>

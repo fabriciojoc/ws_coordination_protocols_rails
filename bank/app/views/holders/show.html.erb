@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @holder.name %>
+</p>
+
+<p>
+  <strong>CPF:</strong>
+  <%= @holder.cpf %>
+</p>
+
+<%= link_to 'Editar', edit_holder_path(@holder) %> |
+<%= link_to 'Voltar', holders_path %>

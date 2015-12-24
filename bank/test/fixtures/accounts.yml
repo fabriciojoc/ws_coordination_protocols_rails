@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  agency: MyString
+  account: MyString
+  password: MyString
+  balance: 9.99
+
+two:
+  agency: MyString
+  account: MyString
+  password: MyString
+  balance: 9.99

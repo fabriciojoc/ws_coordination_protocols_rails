@@ -1,0 +1,46 @@
+<p class="left-align">
+  Login
+</p>
+
+<div class="row card-panel"> 
+  <div class="col s12 m12 l12">
+    <h5 class="left-align">
+      Fazer Login
+    </h5>
+  </div>
+  <% if flash %>
+    <div class="col s12 m12 l12">
+      <% flash.each do |key, value| %>
+        <blockquote>
+            <ul>
+              <li>
+                <%= value %>
+              </li>
+            </ul>
+        </blockquote>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="input-field col s6">
+      <%= f.email_field :email, autofocus: true, :class => 'active' %>
+      <%= f.label :email, "E-mail" %>
+    </div>
+
+    <div class="input-field col s6">
+      <%= f.password_field :password, autocomplete: "off" %>
+      <%= f.label :password, "Senha" %><br />
+    </div>
+
+    <div class="input-field col s12">
+      <%= button_tag :class => "btn waves-effect waves-light" do %>
+          <i class="material-icons right">send</i>
+          Login
+      <% end %>
+      </br>
+      </br>
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</div>

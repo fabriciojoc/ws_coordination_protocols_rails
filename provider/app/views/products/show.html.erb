@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Foto: </strong></br>
+  <%= image_tag @product.photo.url(:medium) %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Descrição:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @product.category.name %>
+</p>
+
+<p>
+  <strong>Preço(R$):</strong>
+  <%= number_to_currency(@product.price, :unit => "R$ ") %>
+</p>
+
+<p>
+  <strong>Quantidade:</strong> </br>
+  <%= @product.amount %> (real)</br>
+  <%= @product.transaction_amount %> (disponiveis para transação)
+</p>
+
+<%= link_to 'Editar', edit_product_path(@product) %> |
+<%= link_to 'Voltar', products_path %>

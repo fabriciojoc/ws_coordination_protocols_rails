@@ -1,0 +1,94 @@
+<nav class="transparent z-depth-0">
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <%= link_to "Jogos", root_path, :class => "black-text breadcrumb" %> 
+      <a href="#" class="black-text breadcrumb"><%= @product[:category] %></a>
+      <%= link_to @product[:name], show_product_path(provider_id: params[:provider_id], product_id: params[:product_id]), :class => "black-text breadcrumb" %>
+      <a href="#" class="black-text breadcrumb">Compra</a>
+    </div>
+  </div>
+</nav>
+
+<div class="row card-panel"> 
+  <div class="col s12 m12 l12">
+    <h5 class="left-align">
+      Detalhes da Compra
+    </h5>
+    <% if notice %>
+  <blockquote class="notice-blockquote">
+      <%= notice %>
+    </blockquote>
+  <% end %>
+  <% if alert %>
+    <blockquote>
+      <%= alert %>
+    </blockquote>
+  <% end %>
+  </div>
+  <div class="col s12 m12 l12">
+    <table>
+      <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td><%= @product[:name] %></td>
+          <td><%= @product[:category] %></td>
+          <td><%= number_to_currency(Provider.find(params[:provider_id]).percentage.to_f*@product[:price].to_f, :unit => "R$ ") %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5 class="left-align">
+      Informações do Cartão
+    </h5>
+
+    <%= form_for @purchase, url: new_product_purchase_path do |f| %>
+
+      <% if @purchase.errors.any? || @form_errors.size > 0 %>
+        <blockquote>
+          <h5 class="left-align bold-text">Encontramos <%= pluralize(@purchase.errors.count + @form_errors.size, "erro") %>:</h5>
+          <ul>
+          <% @form_errors.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+
+          <% @purchase.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </blockquote>
+      <% end %>
+
+      <div class="input-field col s6">
+        <%= collection_select(:purchase, :bank_id, Bank.all, :id, :name, { :include_blank => "Selecione um banco" }) %>
+        <%= f.label :bank_id, "Banco" %>
+      </div>
+
+      <div class="input-field col s6">
+        <%= f.text_field :card_number, :class => "active" %>
+        <%= f.label :card_number, "Número do cartão" %>
+      </div>
+
+      <div class="input-field col s6">
+        <%= password_field_tag :card_password, nil, :class => "active" %>
+        <%= label_tag :card_password, "Senha" %>
+      </div>
+
+      <div class="input-field col s6">
+        <%= text_field_tag :card_code, nil, :class => "active", :maxlength=>"3" %>
+        <%= label_tag :card_code, "Código de Segurança" %>
+      </div>
+
+      <%= button_tag :class => "btn waves-effect waves-light tooltipped", "data-position" => "right", "data-delay" => "50", "data-tooltip" => "Clique para confirmar a compra" do %>
+          <i class="material-icons right">done</i>
+          Confirmar
+      <% end %>
+    <% end %>
+  </div>
+</div>

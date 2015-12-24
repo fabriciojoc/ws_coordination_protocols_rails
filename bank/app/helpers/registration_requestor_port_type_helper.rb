@@ -1,0 +1,2 @@
+module RegistrationRequestorPortTypeHelper
+end

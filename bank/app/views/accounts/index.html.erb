@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Agência</th>
+      <th>Conta</th>
+      <th>Titular</th>
+      <th>Saldo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.agency %></td>
+        <td><%= account.account %></td>
+        <td>
+          <% if account.holder %>
+            <%= link_to account.holder.name, account.holder %>
+          <% else %>
+            Nenhum titular 
+          <% end %>
+        </td>
+        <td><%= number_to_currency(account.balance, :unit => "R$ ") %></td>
+        <td><%= link_to 'Mostar', account %></td>
+        <td><%= link_to 'Editar', edit_account_path(account) %></td>
+        <td><%= link_to 'Excluir', account, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova Conta', new_account_path %>

@@ -1,0 +1,8 @@
+<h5 class="left-align">
+  Categorias
+</h5>
+<div class="collection">
+  <% @categories.each do |c| %>
+    <a class="collection-item black-text waves-effect waves-light" href="#<%= c[:id] + '-' + c[:provider_id].to_s %>"><%= c[:name] %><span class="badge"><%= c[:size] %></span></a>
+  <% end %>
+</div>

@@ -1,0 +1,123 @@
+pt-BR:
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: deve ser aceito
+      blank: não pode ficar em branco
+      confirmation: não está de acordo com a confirmação
+      empty: não pode ficar vazio
+      equal_to: deve ser igual a %{count}
+      even: deve ser par
+      exclusion: não está disponível
+      greater_than: deve ser maior que %{count}
+      greater_than_or_equal_to: deve ser maior ou igual a %{count}
+      inclusion: não está incluído na lista
+      invalid: não é válido
+      less_than: deve ser menor que %{count}
+      less_than_or_equal_to: deve ser menor ou igual a %{count}
+      not_a_number: não é um número
+      not_an_integer: não é um número inteiro
+      odd: deve ser ímpar
+      record_invalid: ! 'A validação falhou: %{errors}'
+      taken: já está em uso
+      too_long: ! 'é muito longo (máximo: %{count} caracteres)'
+      too_short: ! 'é muito curto (mínimo: %{count} caracteres)'
+      wrong_length: não possui o tamanho esperado (%{count} caracteres)
+    template:
+      body: ! 'Por favor, verifique o(s) seguinte(s) campo(s):'
+      header:
+        one: ! 'Não foi possível gravar %{model}: 1 erro'
+        other: ! 'Não foi possível gravar %{model}: %{count} erros.'
+  helpers:
+    select:
+      prompt: Por favor selecione
+    submit:
+      create: Criar %{model}
+      submit: Salvar %{model}
+      update: Atualizar %{model}
+  number:
+    currency:
+      format:
+        delimiter: .
+        format: ! '%u %n'
+        precision: 2
+        separator: ! ','
+        significant: false
+        strip_insignificant_zeros: false
+        unit: R$
+    format:
+      delimiter: .
+      precision: 3
+      separator: ! ','
+      significant: false
+      strip_insignificant_zeros: false
+  support:
+    array:
+      last_word_connector: ! ' e '
+      two_words_connector: ! ' e '
+      words_connector: ! ', '
+  time:
+    am: ''
+    formats:
+      default: ! '%a, %d de %B de %Y, %H:%M:%S %z'
+      long: ! '%d de %B de %Y, %H:%M'
+      short: ! '%d de %B, %H:%M'
+    pm: ''
+  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    models:
+      user:
+        one: "Usuário"
+        other: "Usuários"
+      bank:
+        one: "Banco"
+        other: "Bancos"
+      provider:
+        one: "Fornecedor"
+        other: "Fornecedores"
+      purchase:
+        one: "Compra"
+        other: "Compras"
+    attributes:
+      user:
+        password: "Senha"
+        password_confirmation: "Confirmação da senha"
+        current_password: "Senha atual"
+        name: "Nome"
+        email: "E-mail"
+      bank:
+        name: "Nome"
+        wsdl_location: "URL da WSDL"
+      provider:
+        name: "Fornecedor"
+        description: "Descrição"
+        percentage: "Porcentagem"
+        wsdl_location: "URL da WSDL"
+      purchase:
+        bank_id: "Banco"
+        card_number: "Número do cartão"
+        user_id: "Usuário"
+        provider_id: "Fornecedor"
+        price: "Preço"
+        product_name: "Produto"
+    errors:
+      <<: *errors
+
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Próximo &#8594;"
+    page_gap: "&hellip;"
+    page_entries_info:
+      single_page:
+        zero: "Nenhum registro encontrado(a)!"
+        one: "Mostrando 1 registro"
+        other: "Mostrando %{count} registros"
+      single_page_html:
+        zero: "Nenhum registro encontrado(a)!"
+        one: "Mostrando <b>1</b> registro"
+        other: "Mostrando <b>%{count}</b> registros"
+      multi_page: "Mostrando: %{to} registro(s) de %{count}"
+      multi_page_html: "Mostrando registros de <b>%{from} - %{to}</b> de um total de <b>%{count}</b>"

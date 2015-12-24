@@ -1,0 +1,29 @@
+<%= form_for(@category) do |f| %>
+  <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category.errors.count, "erro") %>: categoria não pôde ser salva:</h2>
+
+      <ul>
+      <% @category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "Nome: " %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description, "Descrição: " %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <% if @category.new_record? %>
+      <%= f.submit "Criar Categoria" %>
+    <% else %>
+      <%= f.submit "Atualizar Categoria" %>
+    <% end %>
+  </div>
+<% end %>

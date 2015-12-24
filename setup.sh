@@ -1,0 +1,17 @@
+cd bank
+bundle install
+rake db:migrate
+rake bank:setup
+cd ..
+cd provider
+bundle install
+rake db:migrate
+rake provider:setup
+cd ..
+cd store-system
+bundle install
+rake db:migrate
+rake store:setup
+cd ..
+cd coordinator
+bundle install

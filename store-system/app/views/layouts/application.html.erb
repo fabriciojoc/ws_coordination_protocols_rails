@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>StoreSystem</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="grey lighten-4">
+  <div class="progress" style="margin:0;">
+      <div class="indeterminate"></div>
+  </div>
+  <nav class="grey lighten-1">
+    <div class="nav-wrapper">
+      <div class="container">
+        <%= link_to "GAME STORE", root_path, :class => 'brand-logo center black-text' %>
+        <ul class="right hide-on-med-and-down">
+          <% if current_user %>
+            <% if current_user.role == "admin" %>
+              <li>
+                <%= link_to "", :class => "dropdown-button black-text", "data-activates" => "dropdown2" do %>
+                  <i class="material-icons left">settings</i>Admin<i class="material-icons right">arrow_drop_down</i>
+                <% end %>
+              </li>
+              <ul id="dropdown2" class="dropdown-content">
+                <li>
+                  <%= link_to banks_path, :class => 'black-text' do %>
+                    Bancos
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to providers_path, :class => 'black-text' do %>
+                    Fornecedores
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to purchases_path, :class => 'black-text' do %>
+                    Compras
+                  <% end %>
+                </li>
+              </ul>
+            <% end %>
+
+            <li>
+              <%= link_to "", :class => "dropdown-button black-text", "data-activates" => "dropdown1" do %>
+                <i class="material-icons left">perm_identity</i><%= current_user.name %><i class="material-icons right">arrow_drop_down</i>
+              <% end %>
+            </li>
+            <ul id="dropdown1" class="dropdown-content">
+              <li>
+                <%= link_to edit_user_registration_path, :class => 'black-text' do %>
+                  Perfil
+                <% end %>
+              </li>
+              <li>
+                <%= link_to my_purchases_path, :class => 'black-text' do %>
+                  Minhas Compras
+                <% end %>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to destroy_user_session_path, :method => :delete, :class => 'black-text' do %>
+                  Sair
+                <% end %>
+              </li>
+            </ul>
+          <% else %>
+            <li>
+              <%= link_to "Fazer Login", new_user_session_path, :class => 'black-text' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m8 l9"> 
+          <%= yield %>
+        </div>
+        <div class="col s12 m4 l3"> 
+          <%= render :partial => 'layouts/categories' %>
+          <%= render :partial => 'layouts/providers' %>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="page-footer grey lighten-1">
+     <div class="footer-copyright">
+      <div class="container black-text">
+        © <%= Time.now.strftime("%Y") %> Copyright
+        <a class="black-text text-lighten-1 right" href="http://www.inf.ufpr.br/fjoc12" target="_blank">Fabrício Ceschin</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

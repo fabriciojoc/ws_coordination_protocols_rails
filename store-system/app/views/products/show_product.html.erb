@@ -1,0 +1,69 @@
+<nav class="transparent z-depth-0">
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <%= link_to "Jogos", root_path, :class => "black-text breadcrumb" %> 
+      <a href="#" class="black-text breadcrumb"><%= @product[:category] %></a>
+      <%= link_to @product[:name], show_product_path(provider_id: params[:provider_id], product_id: params[:product_id]), :class => "black-text breadcrumb" %>
+    </div>
+  </div>
+</nav>
+
+<div class="row card-panel"> 
+  <div class="col s12 m12 l12">
+    <h5 class="left-align">
+      <%= @product[:name] %>
+    </h5>
+    <% if notice %>
+      <blockquote class="notice-blockquote">
+        <%= notice %>
+      </blockquote>
+    <% end %>
+    <% if alert %>
+      <blockquote>
+        <%= alert %>
+      </blockquote>
+    <% end %>
+  </div>
+  <div class="col s12 m12 l6">
+    <div class="video-container">
+      <iframe class="product-video" src="//www.youtube.com/embed/<%= @product[:video] %>?autoplay=1" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="col s12 m12 l6">
+    <div class="hide-on-large-only">
+      </br>
+    </div>
+
+    <div class="card-image waves-effect waves-block waves-light">
+      <%= image_tag @product[:photo], :style => "max-width:100%;", :class => "product-image activator" %>
+    </div>
+
+    <h4 class="left-align">
+      <%= number_to_currency(Provider.find(params[:provider_id]).percentage.to_f*@product[:price].to_f, :unit => "R$ ") %>
+    </h4>
+    <% if @product[:amount].to_i <= 0 %>
+      <%= link_to "#", :class => "waves-effect waves-light btn-large tooltipped disabled", "data-position" => "right", "data-delay" => "50", "data-tooltip" => "#{@product[:name]} está indisponível no momento" do %>
+        <i class="material-icons right">
+          error_outline
+        </i>
+        Produto Indisponível
+      <% end %>
+    <% else %>
+      <%= link_to buy_product_path(provider_id: params[:provider_id], product_id: params[:product_id]), :class => "waves-effect waves-light btn-large tooltipped", "data-position" => "right", "data-delay" => "50", "data-tooltip" => "Clique para comprar #{@product[:name]}" do %>
+        <i class="material-icons right">
+          credit_card
+        </i>
+        Comprar
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col s12 m12 l12">
+    <h5 class="left-align">
+      Descrição
+    </h5>
+    <p>
+      <%= @product[:description].html_safe %>
+    </p>
+  </div>
+
+</div>

@@ -1,0 +1,30 @@
+<h5 class="left-align">
+  Jogos
+</h5>
+<% if notice %>
+  <blockquote class="notice-blockquote">
+    <%= notice %>
+  </blockquote>
+<% end %>
+<% if alert %>
+  <blockquote>
+    <%= alert %>
+  </blockquote>
+<% end %>
+<% @products.each do |p| %>
+  <div class="col l4 m6 s12">
+    <%= link_to show_product_path(provider_id: p[:provider_id], product_id: p[:id]) do %>
+      <div class="card hoverable">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img src="<%= p[:photo] %>" class="activator">
+        </div>
+        <div class="product-content waves-effect">
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4 truncate"><%= p[:name] %></span>
+            <p><%= number_to_currency(Provider.find(p[:provider_id]).percentage*p[:price].to_f, :unit => "R$ ") %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,33 @@
+<%= form_for(@bank) do |f| %>
+  <% if @bank.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bank.errors.count, "error") %> prohibited this bank from being saved:</h2>
+
+      <ul>
+      <% @bank.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-field col s12">
+    <%= f.text_field :name, :class => 'active' %>
+    <%= f.label :name, "Nome" %>
+  </div>
+  <div class="input-field col s12">
+    <%= f.text_field :wsdl_location, :class => 'active' %>
+    <%= f.label :wsdl_location, "URL da WSDL" %>
+  </div>
+  <div class="input-field col s12">
+    <%= link_to 'Voltar', banks_path, :class => "btn waves-effect waves-light" %>
+    <%= button_tag :class => "btn waves-effect waves-light" do %>
+      <i class="material-icons right">done</i>
+      <% if @bank.new_record? %>
+        Criar
+      <% else %>
+        Atualizar
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

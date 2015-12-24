@@ -1,0 +1,45 @@
+<p class="left-align">
+  Fornecedores
+</p>
+
+<div class="row card-panel"> 
+  <div class="col s12 m12 l12">
+    <h5 class="left-align">
+      <%= @provider.name %>
+    </h5>
+    <% if notice %>
+      <blockquote class="notice-blockquote">
+        <%= notice %>
+      </blockquote>
+    <% end %>
+    <% if alert %>
+      <blockquote>
+        <%= alert %>
+      </blockquote>
+    <% end %>
+  </div>
+  <div class="col s12 m12 l12">
+    <p>
+      <strong>Nome:</strong>
+      <%= @provider.name %>
+    </p>
+
+    <p>
+      <strong>Descrição:</strong>
+      <%= @provider.description %>
+    </p>
+
+    <p>
+      <strong>Porcentagem:</strong>
+      <%= @provider.percentage %>
+    </p>
+
+    <p>
+      <strong>URL da WSDL:</strong>
+      <%= @provider.wsdl_location %>
+    </p>
+
+    <%= link_to 'Voltar', providers_path, :class => "btn waves-effect waves-light" %>
+    <%= link_to 'Editar', edit_provider_path(@provider), :class => "btn waves-effect waves-light" %> 
+  </div>
+</div>

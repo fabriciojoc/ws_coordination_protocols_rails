@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>Conta:</strong>
+    <% if @card.account %>
+        <%= @card.account.account %>
+    <% else %>
+        Nenhuma conta encontrada.
+    <% end %>
+</p>
+
+<p>
+  <strong>Número:</strong>
+  <%= @card.number %>
+</p>
+
+<p>
+  <strong>Data de validade:</strong>
+  <%= @card.expiration_date %>
+</p>
+
+<p>
+  <strong>Código de segurança:</strong>
+  <%= @card.security_code %>
+</p>
+
+
+<%= link_to 'Editar', edit_card_path(@card) %> |
+<%= link_to 'Voltar', cards_path %>

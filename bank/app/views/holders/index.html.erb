@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Titulares</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @holders.each do |holder| %>
+      <tr>
+        <td><%= holder.name %></td>
+        <td><%= holder.cpf %></td>
+        <td><%= link_to 'Mostrar', holder %></td>
+        <td><%= link_to 'Editar', edit_holder_path(holder) %></td>
+        <td><%= link_to 'Excluir', holder, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Titular', new_holder_path %>

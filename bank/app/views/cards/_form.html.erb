@@ -1,0 +1,46 @@
+<%= form_for(@card) do |f| %>
+  <% if @card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@card.errors.count, "erro") %>: cartão não pôde ser salvo:</h2>
+
+      <ul>
+      <% @card.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :account_id, "Conta: " %><br>
+    <% if Account.all.size > 0 %>
+      <%= f.collection_select :account_id, Account.all, :id, :account %>
+    <% else %>
+      <p style="color: red">Nenhum titular cadastrado. <%= link_to "Clique aqui para cadastrar.", new_holder_path, :style => "color: red" %></p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :number, "Número: " %><br>
+    <%= f.text_field :number, :maxlength=>"16"  %>
+  </div>
+  <div class="field">
+    <%= f.label :expiration_date, "Data de validade: " %><br>
+    <%= f.date_select :expiration_date, :order => [:day, :month, :year], :start_year => Time.now.year, :end_year => Time.now.year + 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :security_code, "Código de segurança: " %><br>
+    <%= f.text_field :security_code, :maxlength=>"3" %>
+  </div>
+  <div class="field">
+    <%= f.label :password, "Senha: " %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="actions">
+    <% if @card.new_record? %>
+      <%= f.submit "Criar Cartão" %>
+    <% else %>
+      <%= f.submit "Atualizar Cartão" %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+module RegistrationCoordinatorPortTypeHelper
+end

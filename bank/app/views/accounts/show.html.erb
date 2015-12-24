@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Agência:</strong>
+  <%= @account.agency %>
+</p>
+
+<p>
+  <strong>Conta:</strong>
+  <%= @account.account %>
+</p>
+
+<p>
+  <strong>Saldo:</strong> </br>
+  <%= number_to_currency(@account.balance, :unit => "R$ ") %> (real)</br>
+  <%= number_to_currency(@account.transaction_balance, :unit => "R$ ") %> (disponiveis para transação)
+</p>
+
+<p>
+    <strong>Titular:</strong>
+    <% if @account.holder %>
+        <%= @account.holder.name %>
+    <% else %>
+        Nenhum holder encontrado.
+    <% end %>
+</p>
+
+<%= link_to 'Editar', edit_account_path(@account) %> |
+<%= link_to 'Voltar', accounts_path %>

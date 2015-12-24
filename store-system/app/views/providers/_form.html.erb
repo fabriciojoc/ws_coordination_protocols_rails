@@ -1,0 +1,41 @@
+<%= form_for(@provider) do |f| %>
+  <% if @provider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
+
+      <ul>
+      <% @provider.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-field col s12">
+    <%= f.text_field :name, :class => "active" %>
+    <%= f.label :name, "Nome" %>
+  </div>
+  <div class="input-field col s12">
+    <%= f.text_area :description, :class => "materialize-textarea" %>
+    <%= f.label :description, "Descrição" %>
+  </div>
+  <div class="input-field col s12">
+    <%= f.text_field :percentage, :class => "active" %>
+    <%= f.label :percentage, "Porcentagem" %>
+  </div>
+  <div class="input-field col s12">
+    <%= f.text_field :wsdl_location, :class => "active" %>
+    <%= f.label :wsdl_location, "URL da WSDL" %>
+  </div>
+  <div class="input-field col s12">
+    <%= link_to 'Voltar', providers_path, :class => "btn waves-effect waves-light" %>
+    <%= button_tag :class => "btn waves-effect waves-light" do %>
+      <i class="material-icons right">done</i>
+      <% if @provider.new_record? %>
+        Criar
+      <% else %>
+        Atualizar
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

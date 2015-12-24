@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bank</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<ul>
+    <li>
+        <%= link_to "Titulares", holders_path %>
+    </li>
+    <li>
+        <%= link_to "Contas", accounts_path %>
+    </li>
+    <li>
+        <%= link_to "Cartões", cards_path %>
+    </li>
+<ul>
+<%= yield %>
+
+</body>
+</html>

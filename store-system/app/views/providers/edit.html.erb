@@ -1,0 +1,24 @@
+<p class="left-align">
+  Fornecedores
+</p>
+
+<div class="row card-panel"> 
+  <div class="col s12 m12 l12">
+    <h5 class="left-align">
+      Editar Fornecedor
+    </h5>
+    <% if notice %>
+      <blockquote class="notice-blockquote">
+        <%= notice %>
+      </blockquote>
+    <% end %>
+    <% if alert %>
+      <blockquote>
+        <%= alert %>
+      </blockquote>
+    <% end %>
+  </div>
+  <div class="col s12 m12 l12">
+    <%= render 'form' %>
+  </div>
+</div>

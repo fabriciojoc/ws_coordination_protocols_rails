@@ -1,0 +1,60 @@
+<p class="left-align">
+  Fornecedores
+</p>
+
+<div class="row card-panel"> 
+  <div class="col s12 m12 l12">
+    <h5 class="left-align">
+      Fornecedores
+    </h5>
+    <% if notice %>
+      <blockquote class="notice-blockquote">
+        <%= notice %>
+      </blockquote>
+    <% end %>
+    <% if alert %>
+      <blockquote>
+        <%= alert %>
+      </blockquote>
+    <% end %>
+  </div>
+  <div class="col s12 m12 l12">
+    <% if @providers.size > 0 %>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Porcentagem</th>
+            <th>URL da WSDL</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @providers.each do |provider| %>
+            <tr>
+              <td><%= provider.name %></td>
+              <td><%= provider.description %></td>
+              <td><%= provider.percentage %></td>
+              <td><%= provider.wsdl_location %></td>
+              <td><%= link_to 'Mostrar', provider %></td>
+              <td><%= link_to 'Editar', edit_provider_path(provider) %></td>
+              <td><%= link_to 'Excluir', provider, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>Nenhum fornecedor cadastrado.</p>
+    <% end %>
+  </div>
+</div>
+
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+  <%= link_to new_provider_path, :class => "btn-floating btn-large red" do %>
+    <i class="material-icons right">
+      add
+    </i>
+  <% end %>
+</div>

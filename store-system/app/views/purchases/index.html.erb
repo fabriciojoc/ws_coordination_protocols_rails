@@ -1,0 +1,55 @@
+<p class="left-align">
+  Compras
+</p>
+
+<div class="row card-panel"> 
+  <div class="col s12 m12 l12">
+    <h5 class="left-align">
+      Compras
+    </h5>
+    <% if notice %>
+      <blockquote class="notice-blockquote">
+        <%= notice %>
+      </blockquote>
+    <% end %>
+    <% if alert %>
+      <blockquote>
+        <%= alert %>
+      </blockquote>
+    <% end %>
+  </div>
+  <div class="col s12 m12 l12">
+    <% if @purchases.size > 0 %>
+      <table>
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Cartão</th>
+            <th>Usuário</th>
+            <th>Fornecedor</th>
+            <th>Status</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @purchases.each do |purchase| %>
+            <tr>
+              <td><%= purchase.product_name %></td>
+              <td><%= purchase.price %></td>
+              <td><%= purchase.card_number %></td>
+              <td><%= purchase.user.name %></td>
+              <td><%= purchase.provider.name %></td>
+              <td><%= purchase.status %></td>
+              <td><%= link_to 'Mostrar', purchase %></td>
+              <td><%= link_to 'Excluir', purchase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p> Nenhuma compra encontrada. </p>
+    <% end %>
+  </div>
+</div>

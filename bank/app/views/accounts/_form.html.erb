@@ -1,0 +1,50 @@
+<%= form_for(@account) do |f| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account.errors.count, "erro") %>: conta não pôde ser salva:</h2>
+
+      <ul>
+      <% @account.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :holder_id, "Titular: " %><br>
+    <% if Holder.all.size > 0 %>
+      <%= f.collection_select :holder_id, Holder.all, :id, :name %>
+    <% else %>
+      <p style="color: red">Nenhum titular cadastrado. <%= link_to "Clique aqui para cadastrar.", new_holder_path, :style => "color: red" %></p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :agency, "Agência: " %><br>
+    <%= f.text_field :agency %>
+  </div>
+  <div class="field">
+    <%= f.label :account, "Conta: " %><br>
+    <%= f.text_field :account %>
+  </div>
+  <div class="field">
+    <%= f.label :password, "Senha: " %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :balance, "Saldo(R$): " %><br>
+    <% if @account.new_record? %>
+      <%= f.text_field :balance, :value => 0.00, 'data-affixes-stay'=>"true", 'data-prefix'=>"R$ ", 'data-thousands'=>".", 'data-decimal'=>"," %>
+    <% else %>
+      <%= f.text_field :balance, 'data-affixes-stay'=>"true", 'data-prefix'=>"R$ ", 'data-thousands'=>".", 'data-decimal'=>"," %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <% if @account.new_record? %>
+      <%= f.submit "Criar Conta" %>
+    <% else %>
+      <%= f.submit "Atualizar Conta" %>
+    <% end %>
+  </div>
+<% end %>

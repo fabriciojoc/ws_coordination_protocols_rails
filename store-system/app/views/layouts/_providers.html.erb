@@ -1,0 +1,8 @@
+<h5 class="left-align">
+  Fornecedores
+</h5>
+<div class="collection">
+  <% @providers.each do |p| %>
+    <a class="collection-item black-text waves-effect waves-light" href="#<%= p[:id] %>"><%= p[:name] %><span class="badge"><%= p[:number] %></span></a>
+  <% end %>
+</div>

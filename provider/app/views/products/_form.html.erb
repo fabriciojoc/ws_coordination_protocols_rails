@@ -1,0 +1,56 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "erro") %>: produto não pôde ser salvo::</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :photo, "Foto: "%><br>
+    <%= f.file_field :photo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category_id, "Categoria: " %><br>
+    <% if Category.all.size > 0 %>
+      <%= f.collection_select :category_id, Category.all, :id, :name %>
+    <% else %>
+      <p style="color: red">Nenhuma categoria cadastrada. <%= link_to "Clique aqui para cadastrar.", new_category_path, :style => "color: red" %></p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name, "Nome: "%><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description, "Descrição: " %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :price, "Preço(R$): " %><br>
+    <% if @product.new_record? && !@product.errors.any?%>
+      <%= f.text_field :price, :value => 0.00, 'data-affixes-stay'=>"true", 'data-prefix'=>"R$ ", 'data-thousands'=>".", 'data-decimal'=>"," %>
+    <% else %>
+      <%= f.text_field :price, 'data-affixes-stay'=>"true", 'data-prefix'=>"R$ ", 'data-thousands'=>".", 'data-decimal'=>"," %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amount, "Quantidade: " %><br>
+    <%= f.number_field :amount %>
+  </div>
+  <div class="actions">
+    <% if @product.new_record? %>
+      <%= f.submit "Criar Produto" %>
+    <% else %>
+      <%= f.submit "Atualizar Produto" %>
+    <% end %>
+  </div>
+<% end %>

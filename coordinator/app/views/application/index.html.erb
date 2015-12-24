@@ -1,0 +1,45 @@
+<table class="striped centered responsive-table">
+  <thead>
+    <tr>
+      <th data-field="id">id</td>
+      <th data-field="coordination_type">coordination type</th>
+      <th data-field="completion_participants">completion participants</th>
+      <th data-field="tpc_participants">2pc participants</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% $contexts.each do |key, c| %>
+      <tr>
+        <td><%= c.id %> </td>
+        <td><%= c.coordination_type%></td>
+        <td>
+          <% if c.completion_participants.size > 0 %>
+            <% c.completion_participants.each do |p| %>
+              <% if p == c.completion_participants.last %>
+                <%= p %>.
+              <% else %>
+                <%= p %>,
+              <% end %>
+            <% end %>
+          <% else %>
+            Nenhum participante registrado.
+          <% end %>
+        </td>
+
+        <td>
+          <% if c.tpc_participants.size > 0 %>
+            <% c.tpc_participants.each do |p| %>
+              <% if p == c.tpc_participants.last %>
+                <%= p %>.
+              <% else %>
+                <%= p %>,
+              <% end %>
+            <% end %>
+          <% else %>
+            Nenhum participante registrado.
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

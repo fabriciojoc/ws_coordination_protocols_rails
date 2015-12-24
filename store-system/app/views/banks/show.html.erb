@@ -1,0 +1,37 @@
+<p class="left-align">
+  Bancos
+</p>
+
+<div class="row card-panel"> 
+  <div class="col s12 m12 l12">
+    <h5 class="left-align">
+      <%= @bank.name %>
+    </h5>
+    <% if notice %>
+      <blockquote class="notice-blockquote">
+        <%= notice %>
+      </blockquote>
+    <% end %>
+    <% if alert %>
+      <blockquote>
+        <%= alert %>
+      </blockquote>
+    <% end %>
+  </div>
+  <div class="col s12 m12 l12">
+    <p>
+      <strong>Name:</strong>
+      <%= @bank.name %>
+    </p>
+
+    <p>
+      <strong>Wsdl location:</strong>
+      <%= @bank.wsdl_location %>
+    </p>
+    <%= link_to 'Voltar', banks_path, :class => "btn waves-effect waves-light" %>
+    <%= link_to 'Editar', edit_bank_path(@bank), :class => "btn waves-effect waves-light" %> 
+  </div>
+</div>
+
+
+<p id="notice"><%= notice %></p>

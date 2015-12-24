@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cartões</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Conta</th>
+      <th>Número</th>
+      <th>Data de validade</th>
+      <th>Código de segurança</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cards.each do |card| %>
+      <tr>
+        <td>
+          <% if card.account %>
+            <%= card.account.account %>
+          <% else %>
+            Nenhuma conta cadastrada.
+          <% end %>
+        </td>
+        <td><%= card.number %></td>
+        <td><%= card.expiration_date %></td>
+        <td><%= card.security_code %></td>
+        <td><%= link_to 'Mostrar', card %></td>
+        <td><%= link_to 'Editar', edit_card_path(card) %></td>
+        <td><%= link_to 'Excluir', card, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Cartão', new_card_path %>

@@ -1,0 +1,29 @@
+<%= form_for(@holder) do |f| %>
+  <% if @holder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@holder.errors.count, "erros") %>: titular não pôde ser salvo:</h2>
+
+      <ul>
+      <% @holder.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "Nome: " %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :cpf, "CPF: "%><br>
+    <%= f.text_field :cpf %>
+  </div>
+  <div class="actions">
+    <% if @holder.new_record? %>
+      <%= f.submit "Criar Titular" %>
+    <% else %>
+      <%= f.submit "Atualizar Titular" %>
+    <% end %>
+  </div>
+<% end %>
