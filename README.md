@@ -4,6 +4,8 @@ This repository contains the web services protocols WS-Coordination and WS-Trans
 * **Rails version:** 4.2.5
 * **Ruby version:** 2.2.1
 
+For more information, please read my [monograph](monograph.pdf).
+
 ## Systems
 Four systems were implemented to simulate WS-Coordination and WS-Transaction protocols:
 * **[Bank](https://github.com/fabriciojoc/ws_coordination_protocols_rails/tree/master/bank):** every holder can have an account and many cards related to it. It has a web service used by the store to buy products through a card.
