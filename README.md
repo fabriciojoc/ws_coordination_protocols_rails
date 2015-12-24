@@ -9,16 +9,16 @@ Four systems were implemented to simulate WS-Coordination and WS-Transaction pro
   <img src="img/bank.png"/>
 </p>
 
-* **Provider:**
+* **Provider:** provides products to the store through a web service.
 
 <p align="center">
   <img src="img/provider.png"/>
 </p>
 
-* **Store:**
+* **Store:** sell products from multiple providers using their web services. Users can buy these products through a registered bank card.
 
 <p align="center">
   <img src="img/provider.png"/>
 </p>
 
-* **Coordinator:**
+* **Coordinator:** coordinator entity defined by WS-Coordinator and WS-Transaction. It implements both protocols, including *completion* and *two-phase commit* for WS-Transaction.
