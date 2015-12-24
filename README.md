@@ -3,7 +3,10 @@ This repository contains the web services protocols WS-Coordination and WS-Trans
 
 ## Systems
 Four systems were implemented to simulate WS-Coordination and WS-Transaction protocols:
-* **Bank:**
+* **Bank:** 
+![Bank model](img/bank.png)
 * **Provider:**
+![Provider model](img/provider.png)
 * **Store:**
+* ![Store model](img/store.png)
 * **Coordinator:**
