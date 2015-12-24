@@ -25,3 +25,11 @@ Four systems were implemented to simulate WS-Coordination and WS-Transaction pro
 </p>
 
 * **Coordinator:** coordinator entity defined by WS-Coordinator and WS-Transaction. It implements both protocols, including *completion* and *two-phase commit* for WS-Transaction.
+
+## Scripts
+
+There are three scripts avaiable in the root of this project:
+
+* **setup.sh:** run bundle install and create sqlite3 databases for all systems.
+* **start.sh:** start all systems - store (port 3000), provider (port 3001), bank (port 3002) and coordinator (port 3003).
+* **clear.sh:** delete all databases. After running this, is necessary to create all databases again.
