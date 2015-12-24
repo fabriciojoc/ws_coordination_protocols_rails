@@ -5,14 +5,20 @@ This repository contains the web services protocols WS-Coordination and WS-Trans
 Four systems were implemented to simulate WS-Coordination and WS-Transaction protocols:
 * **Bank:** every holder can have an account and many cards related to it. It has a web service used by the store to buy products through a card.
 
-![Bank model](img/bank.png)
+<p align="center">
+  <img src="img/bank.png"/>
+</p>
 
 * **Provider:**
 
-![Provider model](img/provider.png)
+<p align="center">
+  <img src="img/provider.png"/>
+</p>
 
 * **Store:**
 
-![Store model](img/store.png)
+<p align="center">
+  <img src="img/provider.png"/>
+</p>
 
 * **Coordinator:**
